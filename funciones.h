@@ -12,11 +12,13 @@ typedef struct
     int edad;
     int telefono;
     int numDirecciones;
-    Direccion direccion[3];
+    Direccion direcciones[3];
     int estado;
 }Persona;
 
+int menu();
 void leerCadena(char *cadena, int n);
 int validarIntRango(int a, int b);
 void crearPersona1(Persona *personas, int *n);
 Persona crearPersona2();
+void mostrarPersonas(Persona *personas, int *n);

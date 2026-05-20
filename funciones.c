@@ -2,6 +2,17 @@
 #include <string.h>
 #include "funciones.h"
 
+int menu(){
+    printf("Seleccione una opcion:\n");
+    printf("1.Crear Personas\n");
+    printf("2.Mostrar Personas\n");
+    printf("3.Actualizar Persona\n");
+    printf("4.Borrar Persona\n");
+    printf("5.Salir\n");
+    printf(">> ");
+    int opc = validarIntRango(1,5);
+    return opc;
+}
 
 void crearPersona1(Persona *personas, int *n){
     printf("Ingrese el nombre de la persona %d: ",*n);
@@ -16,9 +27,9 @@ void crearPersona1(Persona *personas, int *n){
     {
         printf("Direccion %d\n",i+1);
         printf("Ingrese la calle: ");
-        leerCadena(personas[*n].direccion[i].calle,40);
-        printf("Ingrese el numero de la casa:");
-        personas[*n].direccion[i].numero = validarIntRango(1,1000);
+        leerCadena(personas[*n].direcciones[i].calle,40);
+        printf("Ingrese el numero de la casa: ");
+        personas[*n].direcciones[i].numero = validarIntRango(1,1000);
     }
     (*n)++;
 }
@@ -27,16 +38,25 @@ void mostrarPersonas(Persona *personas, int *n){
     printf("#\t\tNombre\t\tEdad\t\tTelefono\n");
     for (int i = 0; i < *n; i++)
     {
-        printf("%d\t\t%s\t\t%d\t\t%d\n",i+1,personas[i].nombre,personas[i].edad,personas[i].telefono);
-        for (int j = 0; j < 3; j++)
+        printf("%d\t\t%s\t\t%d\t\t%d\n",i,
+                                        personas[i].nombre,
+                                        personas[i].edad,
+                                        personas[i].telefono);
+    }
+    printf("Desea ver el detalle de una persona 1.Si/2.No: ");
+    int opc = validarIntRango(1,2);
+
+    if (opc == 1)
+    {
+        printf("Ingrese el numero de la persona: ");
+        int num = validarIntRango(0,(*n) - 1);
+        for (int i = 0; i < personas[num].numDirecciones; i++)
         {
-            if (strlen(personas[i].direccion[j].calle) > 0)
-            {
-                printf("\tDireccion %d: %s %d\n",j+1,personas[i].direccion[j].calle,personas[i].direccion[j].numero);
-            }
+            printf("Direccion %d\n", i);
+            printf("Calle: %s Numero: %d\n",personas[num].direcciones[i].calle,
+                                            personas[num].direcciones[i].numero);
         }
     }
-    
 }
 
 
