@@ -59,6 +59,34 @@ void mostrarPersonas(Persona *personas, int *n){
     }
 }
 
+int buscarPersona(Persona *personas, int *n){
+    char nomBuscar[20];
+    int index = 0, f = 0;
+    printf("Ingrese el nombre de la persona que desea buscar: ");
+    leerCadena(nomBuscar,20);
+    for (int i = 0; i < *n; i++)
+    {
+        if (strcmp(personas[i].nombre,nomBuscar)==0)
+        {
+            index = i;
+            f=1;
+            break;
+        }
+    }
+    if(f==0){
+        index = -1;
+    }
+    return index;
+}
+
+void actualizarPersona(Persona *personas, int *n){
+    int index = buscarPersona(personas,n);
+    if (index != -1){
+        crearPersona1(personas,&index);
+    }
+}
+
+
 
 Persona crearPersona2(){
     Persona persona;

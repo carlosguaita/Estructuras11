@@ -20,7 +20,11 @@ int main (int argc, char *argv[]) {
         case 2:
             mostrarPersonas(ps,&cont);
             break;
+        case 3:
+            actualizarPersona(ps,&cont);
+            break;
         default:
+            return 0;
             break;
         }
         printf("Desea seleccionar otra opcion 1.Si/2.No: ");

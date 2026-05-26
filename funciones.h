@@ -22,3 +22,5 @@ int validarIntRango(int a, int b);
 void crearPersona1(Persona *personas, int *n);
 Persona crearPersona2();
 void mostrarPersonas(Persona *personas, int *n);
+int buscarPersona(Persona *personas, int *n);
+void actualizarPersona(Persona *personas, int *n);
